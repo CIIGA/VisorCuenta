@@ -60,7 +60,7 @@ $(document).ready(function () {
                 tarjetaBody.appendChild(fechac);
 
                 var nombrep = document.createElement('p');
-                nombrep.textContent = 'Nombre: ' + nombre;
+                nombrep.textContent = 'Nombre: ' + nombre+IdRegistro;
                 tarjetaBody.appendChild(nombrep);
 
                 var descripcionP = document.createElement('p');
@@ -74,8 +74,9 @@ $(document).ready(function () {
                     botonRedireccion.className = 'btn btn-save';
                     botonRedireccion.addEventListener('click', function () {
                         // Redirige a la otra vista al hacer clic en el botón
-                        window.location.href = 'Gestiones/?bd=' + bd + '&rol=' + rol + '&registro=' + IdRegistro + '&cuenta=' + searchInput+'&plz='+plz;
+                        window.location.href = 'php/gestiones/?bd=' + bd + '&rol=' + rol + '&registro=' + IdRegistro + '&cuenta=' + searchInput+'&plz='+plz;
                     });
+                    
                     tarjetaBody.appendChild(botonRedireccion);
                 }
 
