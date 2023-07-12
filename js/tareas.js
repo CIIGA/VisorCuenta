@@ -2,7 +2,11 @@ $(document).ready(function () {
     $('#searchButton').click(function () {
         var searchInput = $('#searchInput').val();
         var bd = $('#base').val();
-
+        var url = new URL(window.location.href);
+        //Parametro de la url 
+        var params = new URLSearchParams(url.search);
+        //Extraccion de la plaza
+        var plz = params.get('plz');
         // Primera petición AJAX
         var request1 = $.ajax({
             url: 'php/actions/tareasRealizadasCuenta.php',
@@ -70,7 +74,7 @@ $(document).ready(function () {
                     botonRedireccion.className = 'btn btn-save';
                     botonRedireccion.addEventListener('click', function () {
                         // Redirige a la otra vista al hacer clic en el botón
-                        window.location.href = 'Gestiones/?bd=' + bd + '&rol=' + rol + '&registro=' + IdRegistro + '&cuenta=' + searchInput;
+                        window.location.href = 'Gestiones/?bd=' + bd + '&rol=' + rol + '&registro=' + IdRegistro + '&cuenta=' + searchInput+'&plz='+plz;
                     });
                     tarjetaBody.appendChild(botonRedireccion);
                 }
