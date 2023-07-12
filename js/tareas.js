@@ -53,33 +53,48 @@ $(document).ready(function () {
                 tarjetaBody.className = 'card-body';
                 tarjeta.appendChild(tarjetaBody);
 
-
                 var fechac = document.createElement('p');
                 fechac.textContent = 'Fecha de Captura: ' + FechaCaptura;
                 fechac.style.color = 'green';
                 tarjetaBody.appendChild(fechac);
 
                 var nombrep = document.createElement('p');
-                nombrep.textContent = 'Nombre: ' + nombre+IdRegistro;
+                nombrep.textContent = 'Nombre: ' + nombre;
                 tarjetaBody.appendChild(nombrep);
 
                 var descripcionP = document.createElement('p');
                 descripcionP.textContent = 'Descripción: ' + descripcion;
                 tarjetaBody.appendChild(descripcionP);
 
-                if (rol == 'Carta' || rol == 'Abogado' || rol == 'Gestor' || rol == 'Cortes') {
-                    // Agrega el botón de redirección
+                // if (rol === 'Carta' || rol === 'Abogado' || rol === 'Gestor' || rol === 'Cortes') {
+                //     // Agrega el botón de redirección
+                //     var botonRedireccion = document.createElement('button');
+                //     botonRedireccion.textContent = 'Detalles';
+                //     botonRedireccion.className = 'btn btn-save';
+                //     botonRedireccion.addEventListener('click', function () {
+                //         // Redirige a la otra vista al hacer clic en el botón
+                //         window.location.href = 'php/gestiones/?bd=' + bd + '&rol=' + rol + '&registro=' + IdRegistro + '&cuenta=' + searchInput+'&plz='+plz;
+                //     });
+
+                //     tarjetaBody.appendChild(botonRedireccion);
+                // }
+
+                if (rol === 'Carta' || rol === 'Abogado' || rol === 'Gestor' || rol === 'Cortes') {
                     var botonRedireccion = document.createElement('button');
                     botonRedireccion.textContent = 'Detalles';
                     botonRedireccion.className = 'btn btn-save';
-                    botonRedireccion.addEventListener('click', function () {
+                
+                    // Utiliza una función externa para capturar los valores de rol e IdRegistro
+                    // en cada iteración del bucle
+                    botonRedireccion.addEventListener('click', (function (rol, IdRegistro) {
+                      return function () {
                         // Redirige a la otra vista al hacer clic en el botón
                         window.location.href = 'php/gestiones/?bd=' + bd + '&rol=' + rol + '&registro=' + IdRegistro + '&cuenta=' + searchInput+'&plz='+plz;
-                    });
-                    
+                      };
+                    })(rol, IdRegistro));
+                
                     tarjetaBody.appendChild(botonRedireccion);
-                }
-
+                  }
                 // Agrega la tarjeta al contenedor
                 tareasContainerRealizadas.appendChild(tarjeta);
             }
