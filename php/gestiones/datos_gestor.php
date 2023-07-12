@@ -40,6 +40,7 @@ if ($rolId != 0) {
                 <input type="hidden" name="tabla" value="<?php echo $tabla ?>">
                 <input type="hidden" name="registro" value="<?php echo $registro ?>">
                 <input type="hidden" name="cuenta" value="<?php echo $cuenta ?>">
+                <input type="hidden" name="plz" value="<?php echo $plz ?>">
                 <input type="hidden" type="datetime-local" name="fecha_old" value="<?php echo $datos['Fecha'] ?>">
                 <input type="hidden" name="IdAspUser_old" value="<?php echo $IdAspUser ?>">
                 <input type="hidden" name="IdTarea_old" value="<?php echo $datos['IdTarea']  ?>">

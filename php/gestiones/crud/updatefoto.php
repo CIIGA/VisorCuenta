@@ -8,9 +8,11 @@ use Aws\S3\Exception\S3Exception;
 
 
 if (
-    isset($_POST['id']) and isset($_POST['tipo']) and isset($_FILES["foto"]["name"]) and isset($_POST['fecha']) and isset($_POST['nombre'])
-    and isset($_POST['bd']) and isset($_POST['rol']) and isset($_POST['registro']) and isset($_POST['cuenta'])
+    isset($_POST['id']) and isset($_POST['tipo']) and isset($_FILES["foto"]["name"]) and isset($_POST['fecha']) and isset($_POST['nombre_old'])
+    and isset($_POST['tipo_old']) and isset($_POST['url_old'])
+    and isset($_POST['bd']) and isset($_POST['rol']) and isset($_POST['registro']) and isset($_POST['cuenta']) and isset($_POST['plz'])
 ) {
+    $plz = $_POST['plz'];
     $bd = $_POST['bd'];
     $rol = $_POST['rol'];
     $registro = $_POST['registro'];
@@ -18,9 +20,13 @@ if (
 
     $id = $_POST['id'];
     $tipo = utf8_encode($_POST['tipo']);
+    $tipo_old = utf8_encode($_POST['tipo_old']);
+    $url_old = utf8_encode($_POST['url_old']);
     $file = $_FILES["foto"];
     $fecha = $_POST['fecha'];
-    $nombre = $_POST['nombre'];
+    $nombre_old = $_POST['nombre_old'];
+
+
 
     $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
     $fechaHoraActual = date('Y-m-d H:i:s');
@@ -41,37 +47,42 @@ if (
     ]);
 
 
-    
-            //insertamos el archivo a amazon
-            $insert = insert($file_path, $s3, $bucket, $key);
-            // validamos si si inserto
-            if ($insert == 1) {
-                // obtenemos la url
-                $signedUrl = url($s3, $key);
-                // validamos si nos mando la url
-                // echo $signedUrl;
-                if ($signedUrl != '') {
-                    $cnx = conexion($bd);
-                    // actualizar registro
-                    $sql_actualizar = "update registrofotomovilprueba set urlImagen='$signedUrl',tipo='$tipo',nombreFoto='$key' 
+
+    //insertamos el archivo a amazon
+    $insert = insert($file_path, $s3, $bucket, $key);
+    // validamos si si inserto
+    if ($insert == 1) {
+        // obtenemos la url
+        $signedUrl = url($s3, $key);
+        // validamos si nos mando la url
+        // echo $signedUrl;
+        if ($signedUrl != '') {
+            $cnx = conexion($bd);
+            $cnx_administrador = conexion('implementtaAdministrator');
+            // actualizar registro
+            $sql_actualizar = "update registrofotomovil set urlImagen='$signedUrl',tipo='$tipo',nombreFoto='$key' 
                 where idRegistroFoto='$id'";
-                    // echo $sql_actualizar;
-                    if (sqlsrv_query($cnx, $sql_actualizar)) {
-                        header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&UpdateFoto");
-                    } else {
-                        header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&ErrorUpdateFoto");
-                        // echo 'error sql';
-                    }
-                } else {
-                    header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&ErrorS3");
-                    // echo 'error url';
-                }
+            //insertar al historico
+            $sql_insert_historico = "insert into HistoricoUpdateRegistrofotomovil_12072023 
+                    (plaza,id_plaza,idRegistroFoto,urlImagen,tipo,nombreFoto) values
+                    ('$bd','$plz','$id','$url_old','$tipo_old','$nombre_old')";
+
+
+            // echo $sql_actualizar;
+            if (sqlsrv_query($cnx_administrador, $sql_insert_historico) and sqlsrv_query($cnx, $sql_actualizar)) {
+                header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&plz=$plz&UpdateFoto");
             } else {
-                header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&ErrorS3");
-                // echo 'error insert';
+                header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&plz=$plz&ErrorUpdateFoto");
+                // echo 'error sql';
             }
-        
- 
+        } else {
+            header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&plz=$plz&ErrorS3");
+            // echo 'error url';
+        }
+    } else {
+        header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&plz=$plz&ErrorS3");
+        // echo 'error insert';
+    }
 } else {
     echo '<meta http-equiv="refresh" content="0,url=https://gallant-driscoll.198-71-62-113.plesk.page/">';
 }

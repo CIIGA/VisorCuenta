@@ -1,8 +1,9 @@
 <?php
 if (isset($_POST['tabla']) and isset($_POST['FechaCaptura']) and isset($_POST['IdAspUser']) and isset($_POST['IdTarea']) and isset($_POST['fecha_old'])
     and isset($_POST['IdAspUser_old']) and isset($_POST['IdTarea_old'])
-    and isset($_POST['bd']) and isset($_POST['rol']) and isset($_POST['registro']) and isset($_POST['cuenta'])) {
+    and isset($_POST['bd']) and isset($_POST['rol']) and isset($_POST['registro']) and isset($_POST['cuenta']) and isset($_POST['plz'])) {
 require "../include/cnx.php";
+$plz = $_POST['plz'];
 $bd = $_POST['bd'];
 $rol = $_POST['rol'];
 $registro = $_POST['registro'];
@@ -26,21 +27,21 @@ $update_sql = "update $tabla set fechaCaptura=?,IdAspUser=?,idTarea=?";
 if ($update = sqlsrv_query($cnx, $update_sql, array($fecha, $IdAspUser, $IdTarea))) {
     
     // actualizar foto
-    $update_sql_foto = "update RegistroFotomovilprueba set idAspUser='$IdAspUser',idTarea='$IdTarea',fechaCaptura='$fecha',fechaSincronizacion='$fecha'
+    $update_sql_foto = "update RegistroFotomovil set idAspUser='$IdAspUser',idTarea='$IdTarea',fechaCaptura='$fecha',fechaSincronizacion='$fecha'
     where convert(date,fechaCaptura)=convert(date,'$fecha_old') and cuenta='$cuenta' and idAspUser='$IdAspUser_old'";
     // echo $update_sql_foto;
     //si se actualiza mandar mensaje
     if ($update_foto = sqlsrv_query($cnx, $update_sql_foto)) {
-        header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&UpdateGestion");
+        header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&plz=$plz&UpdateGestion");
     } else {
         // en caso contrario regresar la gestion a como estaba para que siga cruzando con la foto y mandar mensaje de error
         $update_sql_gestion = "update $tabla set fechaCaptura=?,IdAspUser=?,idTarea=?";
         if ($update_gestion = sqlsrv_query($cnx, $update_sql_gestion, array($fecha_old, $IdAspUser_old, $IdTarea_old))) {
-            header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&ErrorUpdateGestion");
+            header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&plz=$plz&ErrorUpdateGestion");
         }
     }
 } else {
-    header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&ErrorUpdateGestion");
+    header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&plz=$plz&ErrorUpdateGestion");
 }
 } else {
     echo '<meta http-equiv="refresh" content="0,url=https://gallant-driscoll.198-71-62-113.plesk.page/">';

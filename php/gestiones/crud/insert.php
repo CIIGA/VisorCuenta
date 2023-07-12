@@ -10,8 +10,9 @@ use Aws\S3\Exception\S3Exception;
 if (
     isset($_POST['tipo']) and isset($_FILES["Agregarfoto"]["name"]) and isset($_POST['fecha']) and isset($_POST['IdAspUser'])
     and isset($_POST['IdTarea'])
-    and isset($_POST['bd']) and isset($_POST['rol']) and isset($_POST['registro']) and isset($_POST['cuenta'])
+    and isset($_POST['bd']) and isset($_POST['rol']) and isset($_POST['registro']) and isset($_POST['cuenta']) and isset($_POST['plz'])
 ) {
+    $plz = $_POST['plz'];
     $bd = $_POST['bd'];
     $rol = $_POST['rol'];
     $registro = $_POST['registro'];
@@ -52,21 +53,21 @@ if (
         if ($signedUrl != '') {
             $cnx = conexion($bd);
             // insertamos registro
-            $sql_insert = "insert into registrofotomovilprueba (cuenta,idAspUser,nombreFoto,idTarea,fechaCaptura,tipo,urlImagen,Activo,fechaSincronizacion) values
+            $sql_insert = "insert into registrofotomovil (cuenta,idAspUser,nombreFoto,idTarea,fechaCaptura,tipo,urlImagen,Activo,fechaSincronizacion) values
             ('$cuenta','$IdAspUser','$key','$IdTarea','$fecha','$tipo','$signedUrl',1,'$fecha')";
             // echo $sql_actualizar;
             if (sqlsrv_query($cnx, $sql_insert)) {
-                header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&InsertFoto");
+                header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&plz=$plz&InsertFoto");
             } else {
-                header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&ErrorInsertFoto");
+                header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&plz=$plz&ErrorInsertFoto");
                 // echo 'error sql';
             }
         } else {
-            header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&ErrorS3");
+            header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&plz=$plz&ErrorS3");
             // echo 'error url';
         }
     } else {
-        header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&ErrorS3");
+        header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&plz=$plz&ErrorS3");
         // echo 'error insert';
     }
 } else {
