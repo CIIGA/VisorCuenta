@@ -1,0 +1,129 @@
+.logo {
+  width: 150px;
+  height: 40px;
+}
+body {
+  background-image: url(../img/back.jpg);
+  background-repeat: no-repeat;
+  background-size: 1366px;
+  font-family: "Belanosima", sans-serif;
+}
+
+/* Estilo base para los elementos <li> */
+nav li {
+  padding: 3px;
+  border-radius: 10px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Estilo cuando el cursor pasa por encima del <li> */
+nav li:hover {
+  background-color: white;
+  color: #000 !important;
+  transform: translateY(10px);
+}
+nav a {
+  color: white !important;
+}
+nav a:hover {
+  color: #000 !important;
+}
+.container {
+  margin-top: 80px;
+  justify-content: center;
+  align-items: center;
+}
+.search {
+  margin-bottom: 1%;
+}
+.fa-icon {
+  width: 25px;
+}
+
+.input-group input {
+  width: 400px;
+}
+.btn-search:hover {
+  background-color: #0d0d0d;
+  border-color: #0d0d0d;
+  color: #000 !important;
+  transform: scale(1.1);
+}
+button {
+  padding: 3px;
+  transition: transform 0.3s;
+}
+.button:hover {
+  transform: scale(1.1);
+}
+.info {
+  background-color: #d1d9bf;
+  opacity: 0.7;
+}
+li button {
+  color: #0d0d0d !important;
+}
+li button:hover {
+  background-color: #0d0d0d !important;
+  border-color: #0d0d0d !important;
+  color: #d1d9bf !important;
+  transform: translateY(-10px);
+}
+
+.button-center {
+  margin-left: 50%;
+  margin-right: 50%;
+}
+.btn-save {
+  padding: 10px 10px 10px 10px;
+  color :white;
+  background-color: #0d0d0d;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.btn-save:hover {
+    color :white;
+    background-color: #0d0d0d;
+    transform: scale(1.1);
+  }
+  .mx-content{
+    margin-left: 15%;
+  }
+
+hr{
+  width: 105%; 
+  border-color: #7a7a7a
+}
+input:focus {
+  border-color: #0d0d0d !important;
+  box-shadow: 0 0 5px #000000 !important;
+}
+.image-container {
+  display: inline-block;
+}
+/* Mapa de google */
+#map {
+  height: 400px;
+  width: 100%;
+}
+/* Panorama de google */
+#panorama {
+  height: 400px;
+  width: 100%;
+}
+.alert {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+.container_foto{
+  border-radius: 4px;
+  background-color: #D1D9BF;
+}
+
+.img_cuenta{
+  height: 9rem !important;
+}
