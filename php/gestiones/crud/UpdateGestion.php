@@ -43,5 +43,5 @@ if ($update = sqlsrv_query($cnx, $update_sql, array($fecha, $IdAspUser, $IdTarea
     header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&ErrorUpdateGestion");
 }
 } else {
-    echo '<meta http-equiv="refresh" content="0,url=./">';
+    echo '<meta http-equiv="refresh" content="0,url=https://gallant-driscoll.198-71-62-113.plesk.page/">';
 }

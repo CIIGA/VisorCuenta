@@ -39,13 +39,9 @@ if (
             'secret' => 'jTopgIz1wbhQJaPONDcDCwqNZUwh/325HiC6YmOA',
         ]
     ]);
-    $existe = exists($s3, $bucket, $nombre); //validar si el archivo que pertenece a este registro
 
-    if ($existe == 1) { //si existe 
-        // lo eliminamos 
-        $delete = delete($s3, $bucket, $nombre);
-        if ($delete != 0) { //si si se elimino
 
+    
             //insertamos el archivo a amazon
             $insert = insert($file_path, $s3, $bucket, $key);
             // validamos si si inserto
@@ -74,41 +70,8 @@ if (
                 header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&ErrorS3");
                 // echo 'error insert';
             }
-        } else {
-            header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&ErrorS3");
-        }
-    } elseif ($existe == 2) { //si no se encontro el archivo entonces solo subimos la foto y actualizamos en la bd
-        //insertamos el archivo a amazon
-        $insert = insert($file_path, $s3, $bucket, $key);
-        // validamos si si inserto
-        if ($insert == 1) {
-            // obtenemos la url
-            $signedUrl = url($s3, $key);
-            // validamos si nos mando la url
-            // echo $signedUrl;
-            if ($signedUrl != '') {
-                $cnx = conexion($bd);
-                // actualizar registro
-                $sql_actualizar = "update registrofotomovilprueba set urlImagen='$signedUrl',tipo='$tipo',nombreFoto='$key' 
-                where idRegistroFoto='$id'";
-                // echo $sql_actualizar;
-                if (sqlsrv_query($cnx, $sql_actualizar)) {
-                    header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&UpdateFoto");
-                } else {
-                    header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&ErrorUpdateFoto");
-                    // echo 'error sql';
-                }
-            } else {
-                header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&ErrorS3");
-                // echo 'error url';
-            }
-        } else {
-            header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&ErrorS3");
-            // echo 'error insert';
-        }
-    } else {
-        header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&ErrorS3");
-    }
+        
+ 
 } else {
-    echo '<meta http-equiv="refresh" content="0,url=./">';
+    echo '<meta http-equiv="refresh" content="0,url=https://gallant-driscoll.198-71-62-113.plesk.page/">';
 }

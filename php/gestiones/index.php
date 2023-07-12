@@ -266,7 +266,7 @@ $rolSelect = $datos['Name'];
 </html>
 <?php
 } else {
-  header("location:../../");
+  echo '<meta http-equiv="refresh" content="0,url=https://gallant-driscoll.198-71-62-113.plesk.page/">';
 }
 // } else {
 //     echo '<meta http-equiv="refresh" content="0,url=./">';

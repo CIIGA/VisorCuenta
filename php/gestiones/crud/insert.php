@@ -70,5 +70,5 @@ if (
         // echo 'error insert';
     }
 } else {
-    echo '<meta http-equiv="refresh" content="0,url=./">';
+    echo '<meta http-equiv="refresh" content="0,url=https://gallant-driscoll.198-71-62-113.plesk.page/">';
 }
