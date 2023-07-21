@@ -2,7 +2,7 @@
 
 $sql_fotos = "select f.*,convert(varchar,f.FechaCaptura,126) AS  Fecha,convert(varchar,a.fechaSincronizacion,21) AS  fechaSincro,
 convert(varchar,a.FechaCaptura,21) AS  Fecha_old,c.DescripcionTarea from $tabla a
-inner join [dbo].Registrofotomovilprueba f on a.cuenta=f.cuenta 
+inner join [dbo].Registrofotomovil f on a.cuenta=f.cuenta 
 inner join CatalogoTareas as c on f.idTarea=c.IdTarea
 where convert(date,a.fechacaptura)=convert(date,f.fechacaptura)
 and a.$idRegistro='$registro' and f.IdAspUser='$IdAspUser'";

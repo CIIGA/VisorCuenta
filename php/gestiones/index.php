@@ -26,7 +26,7 @@ if (isset($_GET['bd']) and isset($_GET['rol']) and isset($_GET['registro']) and 
     $rolId = $IdRol['Id'];
     //validamos que tabla se ocupara
     if ($rol == 'Gestor') {
-      $tabla = 'RegistroGestora';
+      $tabla = 'RegistroGestor';
       $idRegistro = 'IdRegistroGestor';
       $gestion = 'Registro Gestor';
     }
