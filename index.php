@@ -11,12 +11,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Estilos de letra -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Belanosima&family=Open+Sans:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
   <link href="css/index.css" rel="stylesheet" />
+  <link href="img/fontawesomeV6/css/all.css" rel="stylesheet" />
   <title>Index</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -31,43 +32,31 @@
       <ul class="navbar-nav mb-2 mb-lg-0 gap-3">
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="#" class="gap-2" id="informacionCuenta">
-            <img width="30" height="30" src="https://img.icons8.com/color/30/info--v1.png" alt="info--v1" />
+            <i class="fa-solid fa-circle-info"></i>
             Información
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#" class="gap-2" id="UbicacionCuenta">
-            <img width="30" height="30" src="https://img.icons8.com/color/30/marker--v1.png" alt="marker--v1" />
+            <i class="fa-solid fa-location-dot"></i>
             Ubicación
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#" id="FotosCuenta">
-            <img width="30" height="30" src="https://img.icons8.com/external-others-inmotus-design/30/external-Photo-Gallery-vkontakte-others-inmotus-design.png" alt="external-Photo-Gallery-vkontakte-others-inmotus-design" />
+            <i class="fa-solid fa-camera"></i>
             Fotos
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#" id="TasksCuenta">
-            <img width="30" height="30" src="https://img.icons8.com/cute-clipart/30/task.png" alt="task" />
+            <i class="fa-solid fa-list-check"></i>
             Tareas
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
-            <img width="30" height="30" src="https://img.icons8.com/cute-clipart/30/comments.png" alt="comments" />
-            Comentarios
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <img width="30" height="30" src="https://img.icons8.com/external-soft-fill-juicy-fish/30/external-judge-legal-soft-fill-soft-fill-juicy-fish-2.png" alt="external-judge-legal-soft-fill-soft-fill-juicy-fish-2" />
-            RPPYP
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            <img width="30" height="30" src="https://img.icons8.com/ultraviolet/30/archive-folder.png" alt="archive-folder" />
+            <i class="fa-solid fa-folder"></i>
             Expediente
           </a>
         </li>
@@ -85,14 +74,14 @@
       </div>
       <div class="input-group">
         <div class="form-outline">
-          <input type="search" id="searchInput" class="form-control form-control-lg" />
+          <input type="search" id="searchInput" class="form-control" />
         </div>
         <button type="button" class="btn btn-dark btn-search" id="searchButton">
           <img src="img/search-white.svg" class="fa-icon" />
         </button>
       </div>
-      <input type="text" class="form-control"  id="plz" value="<?php echo  $id_plaza ?>" name="plz"  hidden>
-      <input type="text" class="form-control"  id="base" value="<?php echo  $plaza['base']; ?>" name="base" hidden>
+      <input type="text" class="form-control" id="plz" value="<?php echo  $id_plaza ?>" name="plz" hidden>
+      <input type="text" class="form-control" id="base" value="<?php echo  $plaza['base']; ?>" name="base" hidden>
     </div>
   </div>
   <!-- Informacion Cuenta -->

@@ -3,37 +3,37 @@
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab" aria-controls="info" aria-selected="true">
-                <img width="20" height="20" src="https://img.icons8.com/color/20/info--v1.png" alt="info--v1" />
+            <i class="fa-solid fa-circle-info"></i>
                 Información de la cuenta
             </button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="domicilio-tab" data-bs-toggle="tab" data-bs-target="#domicilio" type="button" role="tab" aria-controls="domicilio" aria-selected="false">
-                <img width="20" height="20" src="https://img.icons8.com/arcade/20/home.png" alt="home" />
+            <i class="fa-solid fa-house"></i>
                 Domicilio de notificación
             </button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="contacto-tab" data-bs-toggle="tab" data-bs-target="#contacto" type="button" role="tab" aria-controls="contacto" aria-selected="false">
-                <img width="20" height="20" src="https://img.icons8.com/external-nawicon-flat-nawicon/20/external-contact-communication-nawicon-flat-nawicon.png" alt="external-contact-communication-nawicon-flat-nawicon" />
+            <i class="fa-solid fa-address-book"></i>
                 Contacto
             </button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="valoresC-tab" data-bs-toggle="tab" data-bs-target="#valoresC" type="button" role="tab" aria-controls="valoresC" aria-selected="false">
-                <img width="20" height="20" src="https://img.icons8.com/arcade/20/cash-.png" alt="cash-" />
+            <i class="fa-solid fa-sack-dollar"></i>
                 Valores Catastrales
             </button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="adeduos-tab" data-bs-toggle="tab" data-bs-target="#adeduos" type="button" role="tab" aria-controls="adeduos" aria-selected="false">
-                <img width="20" height="20" src="https://img.icons8.com/color/20/check--v1.png" alt="check--v1" />
+            <i class="fa-solid fa-hand-holding-dollar"></i>
                 Adeudos
             </button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="pagos-tab" data-bs-toggle="tab" data-bs-target="#pagos" type="button" role="tab" aria-controls="pagos" aria-selected="false">
-                <img width="20" height="20" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/20/external-payments-automotive-dealership-flaticons-lineal-color-flat-icons-4.png" alt="external-payments-automotive-dealership-flaticons-lineal-color-flat-icons-4" />
+            <i class="fa-solid fa-dollar-sign"></i>
                 Pagos
             </button>
         </li>

@@ -16,22 +16,22 @@
                     <tbody class="table-light">
                         <tr>
                             <td>
-                                <input name="CuentaPagos" type="text" id="CuentaPagos" class="form-control" placeholder="Cuenta" readonly>
+                                <input name="CuentaPagos" type="text" id="CuentaPagos" class="form-control form-control-sm" placeholder="Cuenta" readonly>
                             </td>
                             <td>
-                                <input name="ReferenciaPagos" type="text" id="ReferenciaPagos" class="form-control" placeholder="Referencia" readonly>
+                                <input name="ReferenciaPagos" type="text" id="ReferenciaPagos" class="form-control form-control-sm" placeholder="Referencia" readonly>
                             </td>
                             <td>
-                                <input name="ReciboPagos" type="text" id="ReciboPagos" class="form-control" placeholder="Recibo" readonly>
+                                <input name="ReciboPagos" type="text" id="ReciboPagos" class="form-control form-control-sm" placeholder="Recibo" readonly>
                             </td>
                             <td>
-                                <input name="DescripcionPagos" type="text" id="DescripcionPagos" class="form-control" placeholder="Descripcion" readonly>
+                                <input name="DescripcionPagos" type="text" id="DescripcionPagos" class="form-control form-control-sm" placeholder="Descripcion" readonly>
                             </td>
                             <td>
-                                <input name="TotalPagos" type="text" id="TotalPagos" class="form-control" placeholder="TotalPagos" readonly>
+                                <input name="TotalPagos" type="text" id="TotalPagos" class="form-control form-control-sm" placeholder="TotalPagos" readonly>
                             </td>
                             <td>
-                                <input name="FechaPagos" type="text" id="FechaPagos" class="form-control" placeholder="Fecha" readonly>
+                                <input name="FechaPagos" type="text" id="FechaPagos" class="form-control form-control-sm" placeholder="Fecha" readonly>
                             </td>
                         </tr>
                     </tbody>

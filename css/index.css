@@ -1,35 +1,89 @@
+@keyframes swing {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(10deg);
+  }
+  30% {
+    transform: rotate(0deg);
+  }
+  40% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  60% {
+    transform: rotate(5deg);
+  }
+  70% {
+    transform: rotate(0deg);
+  }
+  80% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+/* Definición de la animación "blink" */
+@keyframes blink {
+  0% {
+    opacity: 1; /* Completamente visible al inicio */
+  }
+  50% {
+    opacity: 0.5; /* Semi-visible en la mitad de la animación */
+  }
+  100% {
+    opacity: 1; /* Completamente visible al final de la animación */
+  }
+}
 .logo {
-  width: 150px;
-  height: 40px;
+  width: 200px;
+  height: 60px;
 }
 body {
   background-image: url(../img/back.jpg);
   background-repeat: no-repeat;
   background-size: 1366px;
-  font-family: "Belanosima", sans-serif;
+  font-family: 'Noto Sans', sans-serif;
 }
 
-/* Estilo base para los elementos <li> */
+/* Estilo base para los elementos <li>
 nav li {
   padding: 3px;
-  border-radius: 10px;
+  border-radius: 10px; 
   transition: background-color 0.3s, transform 0.3s;
-}
+} */
 
 /* Estilo cuando el cursor pasa por encima del <li> */
-nav li:hover {
-  background-color: white;
+/* nav li:hover {
+   background-color: white; 
   color: #000 !important;
-  transform: translateY(10px);
-}
-nav a {
+   transform: translateY(10px); 
+} */
+/* nav a {
   color: white !important;
+} */
+
+/* Estilos al pasar el cursor por encima de la etiqueta <a> */
+.nav-link:hover {
+  color: #000; /* Color del texto al pasar el cursor por encima */
 }
-nav a:hover {
+
+/* Estilos al pasar el cursor por encima del icono */
+.nav-link:hover i {
+  color: #16c7ff; /* Color del icono al pasar el cursor por encima */
+  animation: blink 1s infinite; /* Aplicamos la animación "blink" al icono */
+}
+li a:hover,
+i:hover {
   color: #000 !important;
 }
+
 .container {
-  margin-top: 80px;
+  margin-top: 100px;
   justify-content: center;
   align-items: center;
 }
@@ -69,30 +123,32 @@ li button:hover {
   color: #d1d9bf !important;
   transform: translateY(-10px);
 }
-
+i {
+  color: #406473 !important;
+}
 .button-center {
   margin-left: 50%;
   margin-right: 50%;
 }
 .btn-save {
   padding: 10px 10px 10px 10px;
-  color :white;
+  color: white;
   background-color: #0d0d0d;
   margin-bottom: 10px;
   margin-top: 10px;
 }
 .btn-save:hover {
-    color :white;
-    background-color: #0d0d0d;
-    transform: scale(1.1);
-  }
-  .mx-content{
-    margin-left: 15%;
-  }
+  color: white;
+  background-color: #0d0d0d;
+  transform: scale(1.1);
+}
+.mx-content {
+  margin-left: 15%;
+}
 
-hr{
-  width: 105%; 
-  border-color: #7a7a7a
+hr {
+  width: 105%;
+  border-color: #7a7a7a;
 }
 input:focus {
   border-color: #0d0d0d !important;
@@ -119,11 +175,11 @@ input:focus {
   background-color: #f8d7da;
   border: 1px solid #f5c6cb;
 }
-.container_foto{
+.container_foto {
   border-radius: 4px;
-  background-color: #D1D9BF;
+  background-color: #d1d9bf;
 }
 
-.img_cuenta{
+.img_cuenta {
   height: 9rem !important;
 }
