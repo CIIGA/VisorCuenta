@@ -1,6 +1,8 @@
 <?php
 require "../include/awsv2/vendor/autoload.php";
 
+$key=$_GET['key'];
+
 use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
 // echo date('TH:i:s');
@@ -17,7 +19,6 @@ $s3 = S3Client::factory([
     ]
 ]);
 $bucket='fotos-implementta-movil';
-$key='20407142023-07-12 01:07:55.000Z';
 
 $existe=exists($s3,$bucket,$key);
 // $url=url($s3,$key);

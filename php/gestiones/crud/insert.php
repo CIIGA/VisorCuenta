@@ -6,7 +6,7 @@ require "funcionesS3.php";
 use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
 
-
+ 
 if (
     isset($_POST['tipo']) and isset($_FILES["Agregarfoto"]["name"]) and isset($_POST['fecha']) and isset($_POST['IdAspUser'])
     and isset($_POST['IdTarea'])
@@ -71,5 +71,6 @@ if (
         // echo 'error insert';
     }
 } else {
+   
     echo '<meta http-equiv="refresh" content="0,url=https://gallant-driscoll.198-71-62-113.plesk.page/">';
 }
