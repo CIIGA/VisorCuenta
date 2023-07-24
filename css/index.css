@@ -177,7 +177,13 @@ input:focus {
 }
 .container_foto {
   border-radius: 4px;
-  background-color: #d1d9bf;
+  background-color: #c0bfbf;
+  opacity: 0.9;
+}
+.container_tasks {
+  border-radius: 4px;
+  background-color: #c0bfbf;
+  opacity: 0.9;
 }
 
 .img_cuenta {
