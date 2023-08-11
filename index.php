@@ -2,13 +2,13 @@
 // if ((isset($_GET['plz']))) {
   session_start();
 
-if(isset($_SESSION['userASP']) and isset($_SESSION['plazaBD']) ){
+if(isset($_SESSION['userASP']) and isset($_SESSION['plazaBD']) and isset($_SESSION['idUserASP'])){
   require 'php/cnx/conexion.php';
   $plazaBD = $_SESSION['plazaBD'];
-
+  $id_usuario= $_SESSION['idUserASP'];
   $plaza = plaza($plazaBD);
   $id_plaza=$plaza['id'];
-  // echo $id_plaza;
+  // echo $plazaBD;
 } ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -88,6 +88,7 @@ if(isset($_SESSION['userASP']) and isset($_SESSION['plazaBD']) ){
         </button>
       </div>
       <input type="text" class="form-control" id="plz" value="<?php echo  $id_plaza ?>" name="plz" hidden>
+      <input type="text" class="form-control" id="id_usuario" value="<?php echo  $id_usuario ?>" name="id_usuario" hidden>
       <input type="text" class="form-control" id="base" value="<?php echo  $plaza['base']; ?>" name="base" hidden>
     </div>
   </div>

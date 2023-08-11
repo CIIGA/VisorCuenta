@@ -2,6 +2,7 @@ $(document).ready(function () {
     $('#searchButton').click(function () {
         var searchInput = $('#searchInput').val();
         var bd = $('#base').val();
+        var id_usuario = $('#id_usuario').val();
         var url = new URL(window.location.href);
         //Parametro de la url 
         var params = new URLSearchParams(url.search);
@@ -89,7 +90,7 @@ $(document).ready(function () {
                     botonRedireccion.addEventListener('click', (function (rol, IdRegistro) {
                       return function () {
                         // Redirige a la otra vista al hacer clic en el botón
-                        window.location.href = 'php/gestiones/?bd=' + bd + '&rol=' + rol + '&registro=' + IdRegistro + '&cuenta=' + searchInput+'&plz='+plz;
+                        window.location.href = 'php/gestiones/?bd=' + bd + '&rol=' + rol + '&registro=' + IdRegistro + '&cuenta=' + searchInput+'&plz='+plz+'&id_usuario='+id_usuario;
                       };
                     })(rol, IdRegistro));
                 
