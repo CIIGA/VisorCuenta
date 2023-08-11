@@ -1,7 +1,14 @@
-<?php if ((isset($_GET['plz']))) {
+<?php 
+// if ((isset($_GET['plz']))) {
+  session_start();
+
+if(isset($_SESSION['userASP']) and isset($_SESSION['plazaBD']) ){
   require 'php/cnx/conexion.php';
-  $id_plaza = $_GET['plz'];
-  $plaza = plaza($id_plaza);
+  $plazaBD = $_SESSION['plazaBD'];
+
+  $plaza = plaza($plazaBD);
+  $id_plaza=$plaza['id'];
+  // echo $id_plaza;
 } ?>
 <!DOCTYPE html>
 <html lang="es">
