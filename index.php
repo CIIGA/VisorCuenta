@@ -1,7 +1,12 @@
 <?php 
 // if ((isset($_GET['plz']))) {
+  // require 'php/cnx/conexion.php';
+  //     $plazaBD = 'implementtaTolucaA';
+  //   $id_usuario= 'f7040308-ab1c-43d3-8f12-88ff8448bfc9';
+  //   $plaza = plaza($plazaBD);
+  //   $id_plaza=$plaza['id'];
+  
   session_start();
-
 if(isset($_SESSION['userASP']) and isset($_SESSION['plazaBD']) and isset($_SESSION['idUserASP'])){
   require 'php/cnx/conexion.php';
   $plazaBD = $_SESSION['plazaBD'];
@@ -9,7 +14,8 @@ if(isset($_SESSION['userASP']) and isset($_SESSION['plazaBD']) and isset($_SESSI
   $plaza = plaza($plazaBD);
   $id_plaza=$plaza['id'];
   // echo $plazaBD;
-} ?>
+} 
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -62,7 +68,7 @@ if(isset($_SESSION['userASP']) and isset($_SESSION['plazaBD']) and isset($_SESSI
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="#" id="ExpedientesCuenta">
             <i class="fa-solid fa-folder"></i>
             Expediente
           </a>

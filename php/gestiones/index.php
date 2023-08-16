@@ -209,7 +209,7 @@ WHERE a.$idRegistro='$registro'";
       </div>
       <div class="row" style="text-align: center;">
         <div class="col-md-4">
-          <h6 style="text-shadow: 0px 0px 2px #717171;"><img " src=" https://img.icons8.com/fluency/24/database.png" /> Plaza: <?php echo $bd ?></h6>
+          <h6 style="text-shadow: 0px 0px 2px #717171;"><img src=" https://img.icons8.com/fluency/24/database.png" /> Plaza: <?php echo $bd ?></h6>
         </div>
         <div class="col-md-4">
           <h6 style="text-shadow: 0px 0px 2px #717171;"><img src="https://img.icons8.com/fluency/24/businessman.png" alt=""> Gestión: <?php echo $gestion ?></h6>

@@ -24,4 +24,10 @@ $(document).ready(function() {
   
       $('#contenidoContainer').load('php/tasks/tareasCuenta.php');
     });
+    //Contenido de Tareas de cuenta
+    $('#ExpedientesCuenta').click(function(event) {
+      event.preventDefault(); // Evitar el comportamiento predeterminado del enlace
+  
+      $('#contenidoContainer').load('php/expediente/expedienteCuenta.php');
+    });
   });

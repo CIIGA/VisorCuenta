@@ -10,10 +10,10 @@ $cnx = conexion($BD);
 //Sentencia sql 
 $sql = "select
 CONVERT(varchar, f.fechaCaptura, 23) as fechaCaptura
-,f.tipo as tipo
 ,f.urlImagen as urlImagen
-,a.Nombre as Nombre
-FROM registrofotomovil as f, AspNetUsers as a where f.cuenta='$Cuenta' and f.tipo not in('Expediente') and f.idAspUser=a.Id  order by f.fechaCaptura desc";
+,a.Nombre as Nombre,
+f.cuenta
+FROM registrofotomovil as f, AspNetUsers as a where f.cuenta='$Cuenta' and tipo='Expediente' and  f.idAspUser=a.Id  order by f.fechaCaptura desc";
  $exec = sqlsrv_query($cnx, $sql);
  $rows = array();
 while ($row =sqlsrv_fetch_array($exec, SQLSRV_FETCH_ASSOC)) {
