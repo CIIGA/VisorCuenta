@@ -25,6 +25,7 @@ if (
     $file = $_FILES["foto"];
     $fecha = $_POST['fecha'];
     $nombre_old = $_POST['nombre_old'];
+    $id_usuario = $_POST['id_usuario'];
 
 
 
@@ -64,23 +65,23 @@ if (
                 where idRegistroFoto='$id'";
             //insertar al historico
             $sql_insert_historico = "insert into HistoricoUpdateRegistrofotomovil_12072023 
-                    (plaza,id_plaza,idRegistroFoto,urlImagen,tipo,nombreFoto) values
-                    ('$bd','$plz','$id','$url_old','$tipo_old','$nombre_old')";
+                    (plaza,id_plaza,idRegistroFoto,urlImagen,tipo,nombreFoto,idUser) values
+                    ('$bd','$plz','$id','$url_old','$tipo_old','$nombre_old','$id_usuario')";
 
 
             // echo $sql_actualizar;
             if (sqlsrv_query($cnx_administrador, $sql_insert_historico) and sqlsrv_query($cnx, $sql_actualizar)) {
-                header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&plz=$plz&UpdateFoto");
+                header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&plz=$plz&id_usuario=$id_usuario&UpdateFoto");
             } else {
-                header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&plz=$plz&ErrorUpdateFoto");
+                header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&plz=$plz&id_usuario=$id_usuario&ErrorUpdateFoto");
                 // echo 'error sql';
             }
         } else {
-            header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&plz=$plz&ErrorS3");
+            header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&plz=$plz&id_usuario=$id_usuario&ErrorS3");
             // echo 'error url';
         }
     } else {
-        header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&plz=$plz&ErrorS3");
+        header("location:../?bd=$bd&rol=$rol&registro=$registro&cuenta=$cuenta&plz=$plz&id_usuario=$id_usuario&ErrorS3");
         // echo 'error insert';
     }
 } else {

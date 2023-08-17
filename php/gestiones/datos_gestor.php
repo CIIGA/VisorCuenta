@@ -35,6 +35,8 @@ if ($rolId != 0) {
     <div class=" container col-12">
         <div class="p-3 mx-auto">
             <form action="crud/UpdateGestion.php" method="POST">
+                <input type="hidden" name="idRegistro" value="<?php echo $idRegistro ?>">
+                <input type="hidden" name="id_usuario" value="<?php echo $id_usuario ?>">
                 <input type="hidden" name="bd" value="<?php echo $bd ?>">
                 <input type="hidden" name="rol" value="<?php echo $rol ?>">
                 <input type="hidden" name="tabla" value="<?php echo $tabla ?>">
@@ -44,7 +46,7 @@ if ($rolId != 0) {
                 <input type="hidden" type="datetime-local" name="fecha_old" value="<?php echo $datos['Fecha'] ?>">
                 <input type="hidden" name="IdAspUser_old" value="<?php echo $IdAspUser ?>">
                 <input type="hidden" name="IdTarea_old" value="<?php echo $datos['IdTarea']  ?>">
-             
+
                 <div class="p-2 rounded-4" style=" background-color: #F1F3F3; border: inherit; ">
                     <div class="text-white m-2 align-items-end" style="text-align:right;">
                         <span class="bg-success rounded-2 p-2"><img src="https://img.icons8.com/fluency/30/000000/user-manual.png" />Datos de la gestión</span>

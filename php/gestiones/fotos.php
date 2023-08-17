@@ -44,22 +44,13 @@ $contador = 0;
                         <td class="table-light"><?php echo utf8_encode($datos['Nombre']) ?></td>
                         <td class="table-light">
                             <input type="hidden" name="url" id="ur[<?php echo $contador ?>]" value="<?php echo $fotos['urlImagen'] ?>">
-                            <button class="btn" type="submit" onclick="view(<?php echo $contador ?>)" title="Visualizar Foto" ><img src="https://img.icons8.com/fluency/20/image.png" /></button>
-                            <button class="btn" type="submit" data-toggle="modal" data-target="#modalfotoDelete" id="btnmodalfotoDelete" title="Eliminar foto" 
-                            
-                            data-iddelete="<?php echo $fotos['idRegistroFoto'] ?>" data-urldelete="<?php echo $fotos['urlImagen'] ?>"
-                            data-nombre="<?php echo $fotos['nombreFoto'] ?>" 
-                            data-tipo="<?php echo $fotos['tipo'] ?>"  
-                            data-id_gestor="<?php echo $IdAspUser ?>" data-idtarea="<?php echo $fotos['idTarea'] ?>"
-                            data-fechacaptura="<?php echo $fotos['Fecha_old'] ?>" data-activo="<?php echo $fotos['Activo'] ?>"
-                            data-fechasincronizacion="<?php echo $fotos['fechaSincro'] ?>">
-                            <img src="https://img.icons8.com/fluency/20/delete-trash.png" /></button>
+                            <button class="btn" type="submit" onclick="view(<?php echo $contador ?>)" title="Visualizar Foto"><img src="https://img.icons8.com/fluency/20/image.png" /></button>
+                            <button class="btn" type="submit" data-toggle="modal" data-target="#modalfotoDelete" id="btnmodalfotoDelete" title="Eliminar foto" data-iddelete="<?php echo $fotos['idRegistroFoto'] ?>" data-urldelete="<?php echo $fotos['urlImagen'] ?>" data-nombre="<?php echo $fotos['nombreFoto'] ?>" data-tipo="<?php echo $fotos['tipo'] ?>" data-id_gestor="<?php echo $IdAspUser ?>" data-idtarea="<?php echo $fotos['idTarea'] ?>" data-fechacaptura="<?php echo $fotos['Fecha_old'] ?>" data-activo="<?php echo $fotos['Activo'] ?>" data-fechasincronizacion="<?php echo $fotos['fechaSincro'] ?>">
+                                <img src="https://img.icons8.com/fluency/20/delete-trash.png" /></button>
 
-                            <button class="btn" type="button" data-toggle="modal" data-target="#modalfoto" id="btnmodalfotoupdate" title="Actualizar foto" 
-                            data-id="<?php echo $fotos['idRegistroFoto'] ?>" data-tipo="<?php echo utf8_encode($fotos['tipo']) ?>" data-fecha="<?php echo $fotos['Fecha'] ?>"
-                            data-nombre="<?php echo $fotos['nombreFoto'] ?>" data-url="<?php echo $fotos['urlImagen'] ?>">
-                           
-                            <img src="https://img.icons8.com/fluency/20/edit-text-file.png" /></button>
+                            <button class="btn" type="button" data-toggle="modal" data-target="#modalfoto" id="btnmodalfotoupdate" title="Actualizar foto" data-id="<?php echo $fotos['idRegistroFoto'] ?>" data-tipo="<?php echo utf8_encode($fotos['tipo']) ?>" data-fecha="<?php echo $fotos['Fecha'] ?>" data-nombre="<?php echo $fotos['nombreFoto'] ?>" data-url="<?php echo $fotos['urlImagen'] ?>">
+
+                                <img src="https://img.icons8.com/fluency/20/edit-text-file.png" /></button>
 
                         </td>
                     </tr>
@@ -85,6 +76,7 @@ $contador = 0;
                     <h5>Actualizacion de fotos</h5>
                 </div>
                 <div class="modal-body">
+                    <input type="hidden" name="id_usuario" value="<?php echo $id_usuario ?>">
                     <input type="hidden" name="bd" value="<?php echo $bd ?>">
                     <input type="hidden" name="rol" value="<?php echo $rol ?>">
                     <input type="hidden" name="registro" value="<?php echo $registro ?>">
@@ -94,7 +86,7 @@ $contador = 0;
                     <input type="hidden" id="fecha" name="fecha">
                     <input type="hidden" id="url_old" name="url_old">
                     <input type="hidden" id="tipo_old" name="tipo_old">
-                    <input type="hidden" name="nombre_old" id="nombre_old" >
+                    <input type="hidden" name="nombre_old" id="nombre_old">
                     <label for="formFileSm" class="form-label">Foto de tipo:*</label>
 
                     <select id="comboTipos" name="tipo" class="custom-select custom-select-sm">
@@ -126,19 +118,20 @@ $contador = 0;
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="iddelete" name="iddelete">
+                    <input type="hidden" name="id_usuario" value="<?php echo $id_usuario ?>">
                     <input type="hidden" name="bd" value="<?php echo $bd ?>">
                     <input type="hidden" name="rol" value="<?php echo $rol ?>">
                     <input type="hidden" name="registro" value="<?php echo $registro ?>">
                     <input type="hidden" name="cuenta" value="<?php echo $cuenta ?>">
                     <input type="hidden" name="plz" value="<?php echo $plz ?>">
-                    <input type="hidden" name="nombre" id="nombre" >
-                    <input type="hidden" name="idaspuser" id="idaspuser" >
-                    <input type="hidden" name="idTarea" id="idTarea" >
-                    <input type="hidden" name="fechaCaptura_old" id="fechaCaptura_old" >
-                    <input type="hidden" name="tipo" id="tipo" >
-                    <input type="hidden" name="urlImagen_old" id="urlImagen_old" >
-                    <input type="hidden" name="Activo_old" id="Activo_old" >
-                    <input type="hidden" name="fechaSincronizacion_old" id="fechaSincronizacion_old" >
+                    <input type="hidden" name="nombre" id="nombre">
+                    <input type="hidden" name="idaspuser" id="idaspuser">
+                    <input type="hidden" name="idTarea" id="idTarea">
+                    <input type="hidden" name="fechaCaptura_old" id="fechaCaptura_old">
+                    <input type="hidden" name="tipo" id="tipo">
+                    <input type="hidden" name="urlImagen_old" id="urlImagen_old">
+                    <input type="hidden" name="Activo_old" id="Activo_old">
+                    <input type="hidden" name="fechaSincronizacion_old" id="fechaSincronizacion_old">
                     <label for="formFileSm" class="form-label">Esta Seguro de Eliminar Esta Foto?</label>
                     <img id="fotod" src="" alt="" class="foto_modal">
 
@@ -165,6 +158,7 @@ $contador = 0;
                     </button>
                 </div>
                 <div class="modal-body">
+                    <input type="hidden" name="id_usuario" value="<?php echo $id_usuario ?>">
                     <input type="hidden" name="bd" value="<?php echo $bd ?>">
                     <input type="hidden" name="rol" value="<?php echo $rol ?>">
                     <input type="hidden" name="registro" value="<?php echo $registro ?>">

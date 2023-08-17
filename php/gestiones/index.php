@@ -1,12 +1,13 @@
 <?php
 // session_start();
 // if(isset($_SESSION['user'])){
-if (isset($_GET['bd']) and isset($_GET['rol']) and isset($_GET['registro']) and isset($_GET['cuenta']) and isset($_GET['plz'])) {
+if (isset($_GET['bd']) and isset($_GET['rol']) and isset($_GET['registro']) and isset($_GET['cuenta']) and isset($_GET['plz']) and isset($_GET['id_usuario'])) {
   $plz = $_GET['plz'];
   $bd = $_GET['bd'];
   $rol = $_GET['rol'];
   $registro = $_GET['registro'];
   $cuenta = $_GET['cuenta'];
+  $id_usuario = $_GET['id_usuario'];
   require "include/cnx.php";
   $cnx = conexion($bd);
   //obtengo el id del rol
@@ -241,7 +242,7 @@ WHERE a.$idRegistro='$registro'";
         </div>
 
       </div>
-      <a href="../../index.php?plz=<?php echo $plz ?>" class="btn btn-dark btn-sm" style="display: block; width: min-content; margin: auto; color: #FFFFFF;">
+      <a href="../../index.php?cuenta=<?php echo $cuenta ?>" class="btn btn-dark btn-sm" style="display: block; width: min-content; margin: auto; color: #FFFFFF;">
       <img src="https://img.icons8.com/fluency/30/left.png" /> Regresar</a>
 
 
