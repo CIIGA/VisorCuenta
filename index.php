@@ -5,7 +5,7 @@
   //   $id_usuario= 'f7040308-ab1c-43d3-8f12-88ff8448bfc9';
   //   $plaza = plaza($plazaBD);
   //   $id_plaza=$plaza['id'];
-  
+
   session_start();
 if(isset($_SESSION['userASP']) and isset($_SESSION['plazaBD']) and isset($_SESSION['idUserASP'])){
   require 'php/cnx/conexion.php';
@@ -13,6 +13,12 @@ if(isset($_SESSION['userASP']) and isset($_SESSION['plazaBD']) and isset($_SESSI
   $id_usuario= $_SESSION['idUserASP'];
   $plaza = plaza($plazaBD);
   $id_plaza=$plaza['id'];
+
+  if(isset($_GET['Cuenta']) ){ 
+    $cuenta = $_GET['Cuenta'];
+  }else{
+    $cuenta = "";
+  }
   // echo $plazaBD;
 } 
 ?>
@@ -87,7 +93,7 @@ if(isset($_SESSION['userASP']) and isset($_SESSION['plazaBD']) and isset($_SESSI
       </div>
       <div class="input-group">
         <div class="form-outline">
-          <input type="search" id="searchInput" class="form-control" />
+          <input type="search" id="searchInput" value="<?php echo $cuenta?>" class="form-control" />
         </div>
         <button type="button" class="btn btn-dark btn-search" id="searchButton">
           <img src="img/search-white.svg" class="fa-icon" />
@@ -128,6 +134,14 @@ if(isset($_SESSION['userASP']) and isset($_SESSION['plazaBD']) and isset($_SESSI
   <script src="js/navTab.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/searchData.js"></script>
+  <?php if(isset($_GET['Cuenta']) ){ ?>
+  <script>
+    $( document ).ready(function() {
+      const sBtn = document.getElementById('searchButton');
+      sBtn.click();
+    });
+  </script>
+  <?php } ?>
 </body>
 
 </html>
