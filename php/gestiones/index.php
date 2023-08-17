@@ -242,7 +242,7 @@ WHERE a.$idRegistro='$registro'";
         </div>
 
       </div>
-      <a href="../../index.php?cuenta=<?php echo $cuenta ?>" class="btn btn-dark btn-sm" style="display: block; width: min-content; margin: auto; color: #FFFFFF;">
+      <a href="../../index.php?Cuenta=<?php echo $cuenta ?>" class="btn btn-dark btn-sm" style="display: block; width: min-content; margin: auto; color: #FFFFFF;">
       <img src="https://img.icons8.com/fluency/30/left.png" /> Regresar</a>
 
 
