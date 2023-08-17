@@ -1,20 +1,26 @@
 <?php 
 // if ((isset($_GET['plz']))) {
+  // require 'php/cnx/conexion.php';
+  //     $plazaBD = 'implementtaTolucaA';
+  //   $id_usuario= 'f7040308-ab1c-43d3-8f12-88ff8448bfc9';
+  //   $plaza = plaza($plazaBD);
+  //   $id_plaza=$plaza['id'];
+
+  session_start();
+if(isset($_SESSION['userASP']) and isset($_SESSION['plazaBD']) and isset($_SESSION['idUserASP'])){
   require 'php/cnx/conexion.php';
-      $plazaBD = 'implementtaTolucaA';
-    $id_usuario= 'f7040308-ab1c-43d3-8f12-88ff8448bfc9';
-    $plaza = plaza($plazaBD);
-    $id_plaza=$plaza['id'];
-  
-//   session_start();
-// if(isset($_SESSION['userASP']) and isset($_SESSION['plazaBD']) and isset($_SESSION['idUserASP'])){
-//   require 'php/cnx/conexion.php';
-//   $plazaBD = $_SESSION['plazaBD'];
-//   $id_usuario= $_SESSION['idUserASP'];
-//   $plaza = plaza($plazaBD);
-//   $id_plaza=$plaza['id'];
-//   // echo $plazaBD;
-// } 
+  $plazaBD = $_SESSION['plazaBD'];
+  $id_usuario= $_SESSION['idUserASP'];
+  $plaza = plaza($plazaBD);
+  $id_plaza=$plaza['id'];
+
+  if(isset($_GET['Cuenta']) ){ 
+    $cuenta = $_GET['Cuenta'];
+  }else{
+    $cuenta = "";
+  }
+  // echo $plazaBD;
+} 
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -31,7 +37,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
   <link href="css/index.css" rel="stylesheet" />
   <link href="img/fontawesomeV6/css/all.css" rel="stylesheet" />
-  <title>Index</title>
+  <title>Busqueda</title>
+  <link rel="icon" href="img/implementtaIcon.png">
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
@@ -87,7 +95,7 @@
       </div>
       <div class="input-group">
         <div class="form-outline">
-          <input type="search" id="searchInput" class="form-control" />
+          <input type="search" id="searchInput" value="<?php echo $cuenta?>" class="form-control" />
         </div>
         <button type="button" class="btn btn-dark btn-search" id="searchButton">
           <img src="img/search-white.svg" class="fa-icon" />
@@ -128,6 +136,14 @@
   <script src="js/navTab.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/searchData.js"></script>
+  <?php if(isset($_GET['Cuenta']) ){ ?>
+  <script>
+    $( document ).ready(function() {
+      const sBtn = document.getElementById('searchButton');
+      sBtn.click();
+    });
+  </script>
+  <?php } ?>
 </body>
 
 </html>
