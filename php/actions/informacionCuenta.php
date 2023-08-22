@@ -91,26 +91,19 @@ a.Actualizacion as Actualizacion,
 a.Recargos as Recargos,
 CONVERT(varchar, a.FechaActualizacion, 23) as FechaActualizacionAdeudos,
 CONVERT(varchar, a.FechaUltimoPago, 23) as FechaUltimoPagoAdeudos,
-a.Total as TotalAdeudo,
+a.Total as TotalAdeudo
 --Efectos--
---Pagos--
-p.Cuenta as CuentaPagos,
-p.Referencia as Referencia,
-p.Referencia as Recibo,
-p.Descripcion as Descripcion,
-p.Total as Total,
-CONVERT(varchar, p.FechaPago, 23) as FechaPago
  from 
  implementta as i, 
  DomiciliosNotificacion as d,
  ContactosCuenta as c,
  ValoresCatastrales as v,
- Adeudos as a,
- Pagos as p
+ Adeudos as a
  where i.Cuenta=d.Cuenta and 
  i.Cuenta=c.Cuenta and 
  i.Cuenta=v.Cuenta and 
  i.Cuenta=a.Cuenta and 
+ CONVERT(date, a.FechaActualizacion) = (select max(FechaActualizacion) from Adeudos where Cuenta = '$cuenta') and
  i.Cuenta='$cuenta'
  order by a.FechaActualizacion desc";
  $exec = sqlsrv_query($cnx, $sql);
@@ -123,7 +116,27 @@ while ($row =sqlsrv_fetch_array($exec, SQLSRV_FETCH_ASSOC)) {
     $rows[] = $row;
 }
 
-$jsonData = json_encode($rows);
+$sql2 = "--Pagos--
+SELECT
+Cuenta as CuentaPagos,
+Referencia as Referencia,
+Recibo as Recibo,
+Descripcion as Descripcion,
+Total as Total,
+CONVERT(varchar, FechaPago, 23) as FechaPago
+FROM Pagos WHERE Cuenta ='$cuenta'";
+$exec = sqlsrv_query($cnx, $sql2);
+$rows2 = array();
+
+while ($row2 =sqlsrv_fetch_array($exec, SQLSRV_FETCH_ASSOC)) {
+    foreach ($row2 as &$value) {
+        $value = utf8_encode($value);
+    }
+    $rows2[] = $row2;
+}
+
+$response = array('info' => $rows,'pagos' => $rows2);
+$jsonData = json_encode($response);
 
 if ($jsonData === false) {
     die(json_encode(array('error' => 'Error al convertir los datos en formato JSON')));

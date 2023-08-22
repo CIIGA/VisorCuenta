@@ -1,10 +1,16 @@
 <?php 
-// if ((isset($_GET['plz']))) {
+
   // require 'php/cnx/conexion.php';
   //     $plazaBD = 'implementtaTolucaA';
   //   $id_usuario= 'f7040308-ab1c-43d3-8f12-88ff8448bfc9';
   //   $plaza = plaza($plazaBD);
   //   $id_plaza=$plaza['id'];
+
+  // if(isset($_GET['Cuenta']) ){ 
+  //   $cuenta = $_GET['Cuenta'];
+  // }else{
+  //   $cuenta = "";
+  // }
 
   session_start();
 if(isset($_SESSION['userASP']) and isset($_SESSION['plazaBD']) and isset($_SESSION['idUserASP'])){
@@ -20,7 +26,7 @@ if(isset($_SESSION['userASP']) and isset($_SESSION['plazaBD']) and isset($_SESSI
     $cuenta = "";
   }
   // echo $plazaBD;
-} 
+ } 
 ?>
 <!DOCTYPE html>
 <html lang="es">

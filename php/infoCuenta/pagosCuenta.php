@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="table-responsive">
             <div>
-                <table class="table table-responsive table-bordered table-hover">
+                <table id="tablaPagos" class="table table-responsive table-bordered table-hover">
                     <thead class="table-dark ">
                         <tr>
                             <th class="">Cuenta</th>
@@ -13,7 +13,7 @@
                             <th class="">Fecha Pago</th>
                         </tr>
                     </thead>
-                    <tbody class="table-light">
+                    <tbody id="cuerpoTabla" class="table-light">
                         <tr>
                             <td>
                                 <input name="CuentaPagos" type="text" id="CuentaPagos" class="form-control form-control-sm" placeholder="Cuenta" readonly>

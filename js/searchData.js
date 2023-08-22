@@ -3,14 +3,18 @@ $(document).ready(function () {
     var searchInput = $('#searchInput').val();
     var id_plaza = $('#plz').val();
     var base = $('#base').val();
-
+    
     $.ajax({
       url: 'php/actions/informacionCuenta.php', // Ruta del servidor donde se procesará la solicitud
       method: 'GET',
       data: { id_plaza, searchInput, base },
       success: function (response) {
-        if (response.length > 0) {
-          var data = response[0];
+        
+        if (response.info.length > 0) {
+          
+          var data = response.info[0];
+          var datos = response.pagos;
+
           // Infomacion Cuenta
           $('#Cuenta').val(data.Cuenta);
           $('#Propietario').val(data.Propietario);
@@ -98,15 +102,38 @@ $(document).ready(function () {
           $('#FechaAct').val(data.FechaActualizacionAdeudos);
           $('#Total').val(data.TotalAdeudo);
           //Pagos
-          $('#CuentaPagos').val(data.CuentaPagos);
-          $('#ReferenciaPagos').val(data.Referencia);
-          $('#ReciboPagos').val(data.Recibo);
-          $('#DescripcionPagos').val(data.Descripcion);
-          $('#TotalPagos').val(data.Total);
-          $('#FechaPagos').val(data.FechaPago);
+          let rowHTML = "";
+          let numberR = 1;
+          
+          datos.forEach(element => {
 
-        }
-        else {
+            rowHTML = rowHTML + '<tr>'
+            +'<td><input name="CuentaPagos'+numberR+'" type="text" id="CuentaPagos" value="'+element.CuentaPagos+'" class="form-control form-control-sm" placeholder="Cuenta" readonly></td>'
+            +'<td><input name="ReferenciaPagos'+numberR+'" type="text" id="ReferenciaPagos" value="'+element.Referencia+'" class="form-control form-control-sm" placeholder="Referencia" readonly></td>'
+            +'<td><input name="ReciboPagos'+numberR+'" type="text" id="ReciboPagos" value="'+element.Recibo+'" class="form-control form-control-sm" placeholder="Recibo" readonly></td>'
+            +'<td><input name="DescripcionPagos'+numberR+'" type="text" id="DescripcionPagos" value="'+element.Descripcion+'" class="form-control form-control-sm" placeholder="Descripcion" readonly></td>'
+            +'<td><input name="TotalPagos'+numberR+'" type="text" id="TotalPagos" value="'+element.Total+'" class="form-control form-control-sm" placeholder="TotalPagos" readonly></td>'
+            +'<td><input name="FechaPagos'+numberR+'" type="text" id="FechaPagos" value="'+element.FechaPago+'" class="form-control form-control-sm" placeholder="Fecha" readonly></td>'
+            +'</tr>'
+
+            numberR++;
+            
+          });
+          
+          $('#cuerpoTabla').html(rowHTML);
+
+        }else {
+          let rowHTML = '<tr>'
+            +'<td><input name="CuentaPagos" type="text" id="CuentaPagos" class="form-control form-control-sm" placeholder="Cuenta" readonly></td>'
+            +'<td><input name="ReferenciaPagos" type="text" id="ReferenciaPagos" class="form-control form-control-sm" placeholder="Referencia" readonly></td>'
+            +'<td><input name="ReciboPagos" type="text" id="ReciboPagos" class="form-control form-control-sm" placeholder="Recibo" readonly></td>'
+            +'<td><input name="DescripcionPagos" type="text" id="DescripcionPagos" class="form-control form-control-sm" placeholder="Descripcion" readonly></td>'
+            +'<td><input name="TotalPagos" type="text" id="TotalPagos" class="form-control form-control-sm" placeholder="TotalPagos" readonly></td>'
+            +'<td><input name="FechaPagos" type="text" id="FechaPagos" class="form-control form-control-sm" placeholder="Fecha" readonly></td>'
+            +'</tr>';
+
+          $('#cuerpoTabla').html(rowHTML);
+
           $('#Cuenta').val('');
           $('#Propietario').val('');
           $('#CuentaUni').val('');
@@ -199,9 +226,11 @@ $(document).ready(function () {
         }
       },
       error: function() {
+        console.log("Errores");
         Swal.fire({
           icon: 'error',
           title: 'Error al consultar datos',
+          timer: 2000
         });
       },
       beforeSend: function() {
